@@ -18,8 +18,11 @@ export default function RouteWrapper({
   if (signed && !isPrivate) {
     return <Redirect to="/dashboard" />;
   }
-  if (undefinedRoute) {
+  if (undefinedRoute && !signed) {
     return <Redirect to="/" />;
+  }
+  if (undefinedRoute && signed) {
+    return <Redirect to="/dashboard" />;
   }
   const Layout = signed ? DefaultLayout : AuthLeyout;
 
