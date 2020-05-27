@@ -27,7 +27,7 @@ class SessionController {
         {
           model: File,
           as: 'avatar',
-          attributes: ['id', 'path', url],
+          attributes: ['id', 'path'],
         },
       ],
     });
@@ -40,6 +40,7 @@ class SessionController {
       return res.status(401).json({ error: 'Password does not match.' });
     }
     const { id, name, avatar, provider } = user;
+    console.log(user);
 
     return res.json({
       user: {
